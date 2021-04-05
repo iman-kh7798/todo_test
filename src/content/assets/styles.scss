@@ -1,0 +1,17 @@
+html{
+  direction: rtl;
+}
+
+%flex_container{
+  display: flex;
+}
+
+
+
+form{
+  @extend %flex_container;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

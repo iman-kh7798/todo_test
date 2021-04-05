@@ -1,0 +1,14 @@
+html {
+  direction: rtl;
+}
+
+form {
+  display: flex;
+}
+
+form {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
