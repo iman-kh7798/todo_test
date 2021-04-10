@@ -1,20 +1,18 @@
 import React from "react";
 import express from 'express'
 import html from './server'
-
-
 const PORT=process.env.PORT || 3000
 const app=express()
+import createServerStore from "./server/createStore";
+
 app.use(express.static('public'))
 
 
 app.get('*',(req, res) => {
-    res.send(html())
+    const store=createServerStore()
+    res.send(html(req,store))
 })
-// app.post('*',(req, res) => {
-//     res.send(console.log("damet garm"))
-//
-// })
-app.listen(PORT,() => {
+
+app.listen(3000,() => {
     console.log(`running on port ${PORT}`)
 })

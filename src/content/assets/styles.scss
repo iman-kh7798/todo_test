@@ -1,17 +1,187 @@
-html{
-  direction: rtl;
-}
-
-%flex_container{
+@charset "UTF-8";
+$primary_background:#ececf4;
+$border_radius:50px;
+$border_color:#d1d3e0;
+$text_main_color:#474d67;
+$text_secondary_color:#8d92a5;
+%flex_container {
   display: flex;
+  align-items: center;
+}
+h1,h2,h3,h4,h5,h6{
+  font-weight: bold;
+  color: $text_main_color;
 }
 
+#root {
+  @extend %flex_container;
+  justify-content: center;
+  width: 100%;
+  height: 1000px;
+  color: $text_secondary_color;
+  font-family: system-ui;
+}
+ main{
+   @extend %flex_container;
+   justify-content: center;
+   width: 80%;
+   height: 900px !important;
+   background-color: #f2f3f7;
+   border-radius: 50px;
+   position: relative;
+ }
 
+ #container{
+   width: 98%;
+   height: 98%;
+   background-image:linear-gradient(#ececf4, #fdfdff);
+   border-radius: 50px;
+ }
+ #profiles{
+   width: 29%;
+   height: 100%;
+   border-radius: 50px 0 0 50px;
+   z-index: 2;
+ }
+ %profile_contains{
+   width: 100%;
+   box-shadow: inset 0 0 18px 14px #e7eaf1;
+   background-color: #f2f3f7;
+ }
+ .profile_data{
+   @extend %profile_contains;
+   display: flex;
+   height: auto;
+   border-radius: 50px 0 0 0;
+   border:
+   {
 
-form{
+     bottom: 1px solid $border_color;
+     right: 1px solid $border_color;
+   }
+
+ }
+#profile_tasks_done{
+  display: flex;
+  @extend %profile_contains;
+  flex-direction: column;
+  background-color: #f2f3f7;
+  border-radius: 0 0 0 50px;
+  height: 788px;
+  border:{
+    right: 1px solid $border_color;
+  }
+  align-items: center;
+
+}
+#task_container
+{
   @extend %flex_container;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: $border_radius;
+  width: 90%;
+  height: 450px;
+  background-color: #f2f3f7;
+  margin:{
+    top:20px
+  }
+  box-shadow:0 0 18px 14px #e7eaf1;
+  div{
+    margin-left: 30px;
+    width: 90%;
+    height: 45px;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+}
+#completed{
+  @extend %flex_container;
+  width: 90%;
+  height: 100px;
+  background-color: #f2f3f7;
+  margin:{
+    top:30px
+  }
+  box-shadow:0 0 18px 14px #e7eaf1;
+  border-radius: $border_radius;
+  div{
+    margin-left: 30px;
+  }
+}
+#calendar{
+  box-shadow: inset 0 0 18px 14px #e7eaf1;
+  background-color: #f2f3f7;
+  width: 71%;
+  height: 100%;
+  border-radius: 0 50px 50px 0;
+  position: relative;
+  z-index: 1;
+}
+input{
+  margin-right: 40px;
+  width: 15%;
+  height: 43px;
+  border: 1px solid white;
+  border-radius: 50px;
+  padding: 15px;
+  background-image: linear-gradient(
+                  173deg
+          ,#dee2ed, transparent);
+  box-shadow: 0 25px 9px #e8ebf2;
+}
+.history{
+  display: flex;
+  height: 7%;
+  width: 30%;
+  justify-content: space-around;
+  margin: 40px 0;
+}
+.days_on{
+  width: 13.9%;
+  border: 1px solid $border_color;
+  height: 116px;
+  text-align: center;
+}
+#todo_content{
+  display: none;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  flex-direction: column;
+position: absolute;
+  height: 500px;
+  width: 50%;
+  z-index: 3;
+  background-image:linear-gradient(#ececf4, #fdfdff);
 }
+#add_todo_btn{
+  display: flex;
+  align-items: center;
+  box-shadow: 11px 14px 34px 4px #00000021;
+  border-radius: 50px;
+  width: 40% !important;
+
+}
+#add_todo_btn::before{
+  content: "+";
+  font-size: 28px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  background-color: #e7e7ef;
+  border-radius: 50px;
+  margin: 0 10px;
+}
+#completed_text{
+  width: 35px;
+  text-align: center;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e7e7ef;
+  border-radius: 50px;
+}
+
