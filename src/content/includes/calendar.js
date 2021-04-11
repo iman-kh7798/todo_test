@@ -5,7 +5,7 @@ import search from '../assets/search.png'
 const Calendar = () => {
     return (
         <div id="calendar">
-
+            <div className="shadow_box"/>
             <div className="profile_data" style={{
                 border: "none", borderRadius: "50px 50px", flexDirection: 'column',
                 alignItems: "center", justifyContent: 'space-between'
@@ -29,7 +29,7 @@ const Calendar = () => {
                         <h2>Today</h2>
                         <p>18, Mon</p>
                     </div>
-                    <div style={{position:'relative'}}>
+                    <div style={{position:'relative',marginRight:"20px"}}>
                         <img style={{position:'absolute',width:'17px',top:"33%",paddingLeft:"14px"}} src={search} alt="search"/>
                         <input id="search_box" style={{marginRight: "40px",width:"100%"}} placeholder="     Search"/>
                     </div>
