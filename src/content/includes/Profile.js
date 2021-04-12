@@ -1,7 +1,9 @@
 import React from 'react';
+import {useSelector} from "react-redux";
 import profile from '../assets/SVG/user_phote.png'
 import icon from '../assets/SVG/icon.svg'
 const Profile = () => {
+    const task=useSelector(({tasks})=>tasks)
     return (
         <div id="profiles">
             <div className="profile_data">
@@ -30,9 +32,17 @@ const Profile = () => {
                     <br/>
                 </div>
                 <div id="completed">
-                    <div style={{display:"flex",justifyContent:"space-between",width:'85%',alignItems:"center"}}>
+                    <div style={{display:"flex",justifyContent:"space-between",width:'85%',alignItems:"center",marginTop:'20px'}}>
                         <h2>Completed</h2>
                         <div id="completed_text"><img src={icon} style={{width:"15px",transform:"rotate(270deg)"}} alt='icon'/></div>
+                    </div>
+                    <div style={{width:"100%",marginLeft:"none"}}>
+                        {task.map(Value=>{
+                            console.log(Value)
+                            if(Value.status === 1){
+                                return <li key={Value.todo.toString()}>{Value.todo}</li>
+                            }
+                        })}
                     </div>
                 </div>
             </div>

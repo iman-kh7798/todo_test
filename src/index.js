@@ -12,7 +12,9 @@ import Routes from "./Routes";
 
 app.use(express.static('public'))
 app.get('/fetch',(req, res) => {
-    
+    sqlConnection.query('SELECT * FROM tasks',(err,result,fields)=>{
+        res.status(200).send(result)
+    })
 })
 
 app.get('*',(req, res) => {
@@ -31,10 +33,18 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json({type:"application/json"}))
 app.post('/api',(req, res) => {
-    res.send(console.log(req.body))
+    res.status(200).send('')
     sqlConnection.query(`INSERT INTO tasks(todo, date, status)` +
-        ` VALUES (?,?,?)`,[req.body.todo,req.body.date,0])
+        ` VALUES (?,?,?)`,[req.body.todo,req.body.date-1,0])
 
+})
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+app.use(bodyParser.json({type:"application/json"}))
+app.post("/completed",(req, res) => {
+    res.status(200).send('')
+    sqlConnection.query("UPDATE tasks SET status = 1 WHERE todo = ? ",[req.body.todo])
 })
 
 app.listen(3000,() => {

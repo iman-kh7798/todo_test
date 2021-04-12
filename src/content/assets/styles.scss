@@ -12,12 +12,15 @@ h1,h2,h3,h4,h5,h6{
   font-weight: bold;
   color: $text_main_color;
 }
+*{
+  font-size: 15px;
+}
 
 #root {
   @extend %flex_container;
   justify-content: center;
   width: 100%;
-  height: 1000px;
+  height: auto;
   color: $text_secondary_color;
   font-family: system-ui;
 }
@@ -25,17 +28,30 @@ h1,h2,h3,h4,h5,h6{
    @extend %flex_container;
    justify-content: center;
    width: 80%;
-   height: 900px !important;
    background-color: #f2f3f7;
+   min-height: 907px;
    border-radius: 50px;
    position: relative;
+   height: auto !important;
+   margin: 50px 0;
  }
+#container_main{
+margin: 10px;
+  height: 99%;
+  width: 98%;
+  background-color: #f2f3f7;
+  z-index: 1;
+  border-radius: 50px;
+  box-shadow: inset 0 0 19px 8px #e9ebf1;
+}
 
  #container{
+   margin: 10px;
    width: 98%;
    height: 98%;
-   background-image:linear-gradient(#ececf4, #fdfdff);
+   background-image: linear-gradient(#ececf4, #f2f3f7);
    border-radius: 50px;
+   box-shadow: inset 0 0 20px 11px #edeff4;
  }
  #profiles{
    width: 29%;
@@ -64,15 +80,15 @@ h1,h2,h3,h4,h5,h6{
 #profile_tasks_done{
   display: flex;
   @extend %profile_contains;
+  border-radius: 0 0 0 50px;
   flex-direction: column;
   background-color: #f2f3f7;
-  border-radius: 0 0 0 50px;
   height: 788px;
   border:{
     right: 1px solid $border_color;
   }
   align-items: center;
-
+  box-shadow: inset 0px 20px 18px 14px #e7eaf1
 }
 #task_container
 {
@@ -99,8 +115,10 @@ h1,h2,h3,h4,h5,h6{
 }
 #completed{
   @extend %flex_container;
+  flex-direction: column;
+  justify-content: center;
   width: 90%;
-  height: 100px;
+  height:auto;
   background-color: #f2f3f7;
   margin:{
     top:30px
@@ -110,12 +128,18 @@ h1,h2,h3,h4,h5,h6{
   div{
     margin-left: 30px;
   }
+  li{
+    width: 70%;
+    list-style-type: none;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 23px 30px;
+  }
 }
 #calendar{
   box-shadow: inset 0 0 18px 14px #e7eaf1;
   background-color: #f2f3f7;
   width: 71%;
-  height: 100%;
   border-radius: 0 50px 50px 0;
   position: relative;
   z-index: 1;
@@ -131,6 +155,9 @@ input{
                   173deg
           ,#dee2ed, transparent);
   box-shadow: 0 25px 9px #e8ebf2;
+  &:focus{
+    outline: none;
+  }
 }
 .history{
   display: flex;
@@ -143,9 +170,7 @@ input{
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 13.9%;
   border: 1px solid $border_color;
-  height: 116px;
 }
 #todo_content{
   display: none;
@@ -163,7 +188,7 @@ position: absolute;
   align-items: center;
   box-shadow: 11px 14px 34px 4px #00000021;
   border-radius: 50px;
-  width: 40% !important;
+  width: 50% !important;
 
 }
 #add_todo_btn::before{
@@ -220,4 +245,25 @@ position: absolute;
   height: 284px;
   box-shadow: -16px 20px 20px 0px #f1f3;
 }
-
+#grid_container{
+  display: grid;
+  width: 100%;
+  height: 67%;
+  grid-row-gap: 0;
+  flex-wrap: wrap;
+  grid-gap: 0;
+  grid-template-columns: 14% 14% 14% 14% 14% 14% 15%;
+}
+#addtocompleted{
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 300px;
+  position: absolute;
+  background-color: #f1f2f7;
+  z-index: 9;
+  box-shadow: inset 0 0 20px 20px #f3cbf8;
+  border-radius: 50px 0 50px 0;
+}

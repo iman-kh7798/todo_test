@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
+import {useSelector} from "react-redux";
 import axios from "axios";
 const AddToDO = () => {
     useEffect(() => console.log(date))
     const [date, setDate] = useState("")
     const [todo, setToDo] = useState("")
-
+    const todos = useSelector(({tasks})=>tasks)
     const handleSubmit=(e)=>{
         e.preventDefault()
         axios.post("/api",JSON.stringify({date:date,todo:todo})
@@ -29,18 +30,20 @@ const AddToDO = () => {
                     <div style={{margin: "20px"}}>
                         <p>Task</p>
                         <input type="text" style={{width: "100%"}} value={todo}
-                               onChange={event => setToDo(event.target.value)} required={true}/>
+                               onChange={event => {
+                                   setToDo(event.target.value)
+                               }} required={true}/>
                     </div>
                     <div style={{margin: "20px"}}>
                         <input type="submit" value="submit"/>
-                        <input onClick={() => document.getElementById('todo_content').style.display = "none"}
-                               type="submit"
-                               value="close"/>
                     </div>
+
                 </form>
+                <input onClick={() => document.getElementById('todo_content').style.display = "none"}
+                       type="submit" value="close" style={{marginLeft:'18px'}}/>
             </div>
         </div>
-    );
-};
+    )
+}
 
 export default AddToDO;
