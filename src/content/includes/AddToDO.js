@@ -12,6 +12,7 @@ const AddToDO = () => {
             ,{headers:{
                     "Content-Type":"application/json"
                 }}).then(value => console.log("data sent"))
+        window.location.replace('/')
     }
 
     return (
@@ -23,7 +24,7 @@ const AddToDO = () => {
                         <p>Date</p>
                         <div>
                             <label>2019 / 10 / </label>
-                            <input type="number" max="31" min="18" style={{width: "20%"}} value={date}
+                            <input type="number" max="31" min="0" style={{width: "20%"}} value={date}
                                    onChange={event => setDate(event.target.value)} required={true}/>
                         </div>
                     </div>

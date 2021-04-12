@@ -28,6 +28,7 @@ const ContentCalender = () => {
                                 "Content-Type":"application/json"
                             }}).then(value => console.log("data sent"))
                     document.getElementById("addtocompleted").style.display="none"
+                    window.location.replace('/')
                 })
             })
 
