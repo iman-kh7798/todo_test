@@ -4,6 +4,7 @@ import './assets/styles.scss'
 import Profile from "./includes/Profile";
 import Calendar from "./includes/calendar";
 import AddToDO from "./includes/AddToDO";
+import fetchData from './reducers/actions'
 
 
 function App() {
@@ -17,7 +18,11 @@ function App() {
         </main>
     );
 }
-
+function LoadData(store)
+{
+     store.dispatch(fetchData())
+}
 export default {
-    component:App
+    component:App,
+    LoadData
 }

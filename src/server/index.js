@@ -4,7 +4,7 @@ import Routes from "../Routes";
 import {StaticRouter} from 'react-router-dom'
 import {renderRoutes} from "react-router-config";
 import {Provider} from "react-redux";
-
+import serialize from 'serialize'
 export default (req, store) => {
 
     const content = renderToString(
@@ -23,7 +23,7 @@ export default (req, store) => {
 <body style="background-image: linear-gradient(#d7e4ed, #e4e8f1);">
 <div id="root">${content}</div>
 <script>
-window.INITIAL_STATE=JSON.stringify(${store.getState()})
+window.INITIAL_STATE=${JSON.stringify(store.getState())}
 </script>
 <script src="bundle.js"></script>
 </body>
